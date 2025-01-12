@@ -2,7 +2,7 @@ spring:
   application:
     name: appointment-management-service
   datasource:
-    username: postgres
+    username: admin
     password: root
     url: jdbc:postgresql://localhost:5432/ams
     driver-class-name: org.postgresql.Driver
@@ -10,12 +10,21 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-  data:
-    jdbc:
-      dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8180/realms/ams_dev/protocol/openid-connect/certs
 
 server:
   port: 9090
+  servlet:
+    session:
+      timeout: 20m
 logging:
   level:
     root: INFO
