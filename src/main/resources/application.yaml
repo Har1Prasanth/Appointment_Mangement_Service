@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: appointment-management-service
+  datasource:
+    username: postgres
+    password: root
+    url: jdbc:postgresql://localhost:5432/ams
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  data:
+    jdbc:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 9090
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: "%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - (%msg%n)"
+
+
